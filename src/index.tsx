@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Tasks from './tasks/Tasks';
+import Tasks from './tasks/pages/Tasks';
 
 ReactDOM.render(
   <React.StrictMode>
