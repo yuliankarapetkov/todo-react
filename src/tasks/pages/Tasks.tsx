@@ -1,3 +1,5 @@
+import './Tasks.css';
+
 function Tasks() {
   return (
     <div>
