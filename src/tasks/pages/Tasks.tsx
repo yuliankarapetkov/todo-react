@@ -1,10 +1,12 @@
+import TaskForm from '../components/TaskForm';
+
 import './Tasks.css';
 
 function Tasks() {
   return (
     <div>
         <div className="header">
-            
+            <TaskForm />
         </div>
 
         <div className="content container">
