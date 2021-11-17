@@ -4,9 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Tasks from './tasks/Tasks';
+
 ReactDOM.render(
   <React.StrictMode>
+    <BrowserRouter>
     <App />
+
+      <Routes>
+        <Route path="/tasks" element={<Tasks />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
