@@ -1,10 +1,11 @@
-import './TaskForm.css';
+import styles from './TaskForm.module.css';
 
 function TaskForm() {
     return (
-        <div className="form">
-            <form>
+        <div className={styles.wrapper}>
+            <form className={styles.form}>
                 <input
+                    className={styles.input}
                     type="text"
                     placeholder="What needs to be done?"
                 />
