@@ -23,6 +23,8 @@ function Task({ task, onUpdate, onRemove }: { task: any; onUpdate: (task: any) =
     const submit = (e: any) => {
         e.preventDefault();
 
+        setIsEditing(false);
+
         const clone = {
             ...task,
             description
@@ -69,7 +71,7 @@ function Task({ task, onUpdate, onRemove }: { task: any; onUpdate: (task: any) =
 
                     <div className={styles.col}>
                         <div className={styles.description}>
-                            {task.description}
+                            {description}
                         </div>
                     </div>
 
