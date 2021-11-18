@@ -14,6 +14,10 @@ function Tasks() {
         dispatch(fetchTasks());
     }, []);
 
+    const onCreate = (description: string) => {
+        console.log('created', description);
+    };
+
     const onUpdate = (task: any) => {
         console.log('updated', task);
     };
@@ -26,7 +30,7 @@ function Tasks() {
         <div>
             <div className={styles.header}>
                 <div className="container">
-                    <TaskForm />
+                    <TaskForm onCreate={onCreate} />
                 </div>
             </div>
 
