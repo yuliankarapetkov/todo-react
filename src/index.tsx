@@ -6,11 +6,12 @@ import reportWebVitals from './reportWebVitals';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Tasks from './tasks/pages/Tasks';
+import Header from './app/components/Header';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-    <App />
+      <Header />
 
       <Routes>
         <Route path="/tasks" element={<Tasks />} />

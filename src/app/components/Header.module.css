@@ -1,0 +1,68 @@
+.header {
+    height: 40px;
+    line-height: 40px;
+    background-color: var(--dark-primary-color);
+    color: var(--secondary-color);
+}
+
+.content {
+    display: flex;
+}
+
+a:link,
+a:visited {
+    color: var(--secondary-color);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.left {
+    display: flex;
+}
+
+.brand {
+    font-size: 14px;
+}
+
+.info {
+    display: flex;
+
+    margin-left: 6px;
+}
+
+.info-content {
+    margin-left: 6px;
+    font-size: 10px;
+}
+
+.right {
+    margin-left: auto;
+    display: flex;
+}
+
+.sign-out-button {
+    font-size: 12px;
+    cursor: pointer;
+    margin-right: 6px;
+}
+
+.github {
+    margin-left: 6px;
+}
+
+.github:link .fab,
+.github:visited .fab {
+    color: var(--secondary-color);
+}
+
+.github:hover .fab {
+    color: var(--light-primary-color);
+}
+
+@media (max-width: 768px) {
+    .info {
+        display: none;
+    }
+}
