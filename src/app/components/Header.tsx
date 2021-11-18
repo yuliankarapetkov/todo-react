@@ -1,5 +1,10 @@
 import styles from './Header.module.css';
 
+const parkGitHubUrl = 'https://github.com/r-park';
+const parkDemoUrl = 'https://ng2-todo-app.firebaseapp.com/';
+const authorGitHubUrl = 'https://github.com/yuliankarapetkov'
+const demoCodeUrl = 'https://github.com/yuliankarapetkov/todo-app';
+
 function Header() {
     return (
         <div className={styles.header}>
@@ -16,9 +21,9 @@ function Header() {
 
                         <div className={styles['info-content']}>
                             Inspired by&nbsp;
-                            <a target="_blank">Richard Park</a>'s&nbsp;
-                            <a target="_blank">Todo Angular Firebase</a>,
-                            developed by <a target="_blank">Yulian Karapetkov</a>
+                            <a href={parkGitHubUrl} target="_blank" rel="noreferrer">Richard Park</a>'s&nbsp;
+                            <a href={parkDemoUrl} target="_blank" rel="noreferrer">Todo Angular Firebase</a>,
+                            developed by <a href={authorGitHubUrl} target="_blank" rel="noreferrer">Yulian Karapetkov</a>
                         </div>
                     </div>
                 </div>
@@ -27,7 +32,7 @@ function Header() {
                     <a className={styles['sign-out-button']}>
                         Sign Out
                     </a>
-                    <a className={styles.github} target="_blank">
+                    <a href={demoCodeUrl} className={styles.github} target="_blank" rel="noreferrer">
                         <i className="fab fa-github"></i>
                     </a>
                 </div>
