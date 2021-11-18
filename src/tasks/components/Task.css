@@ -46,12 +46,6 @@ button:first-child {
     white-space: nowrap;
 }
 
-input[type=text] {
-    border: none;
-    padding: 0;
-    outline: none;
-}
-
 @media (max-width: 768px) {
     .task {
         padding: 16px 0;

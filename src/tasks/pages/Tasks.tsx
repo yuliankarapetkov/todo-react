@@ -25,7 +25,9 @@ function Tasks() {
   return (
     <div>
         <div className="header">
-            <TaskForm />
+            <div className="container">
+                <TaskForm />
+            </div>
         </div>
 
         <div className="content container">
