@@ -1,27 +1,18 @@
+import './Tasks.css';
 import Task from '../components/Task';
 import TaskForm from '../components/TaskForm';
-
-import './Tasks.css';
-
-const TASKS = [
-    {
-        description: 'Do something',
-        isCompleted: false,
-        key: 'v1'
-    },
-    {
-        description: 'Do something else',
-        isCompleted: false,
-        key: 'v2'
-    },
-    {
-        description: 'Do another thing',
-        isCompleted: false,
-        key: 'v3'
-    },
-];
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchTasks } from '../store/tasks-actions';
 
 function Tasks() {
+    const dispatch = useDispatch();
+    const tasks = useSelector((state: any) => state.tasks.list);
+
+    useEffect(() => {
+        dispatch(fetchTasks());
+    }, []);
+
     const onUpdate = (task: any) => {
         console.log('updated', task);
     };
@@ -40,9 +31,10 @@ function Tasks() {
 
             <div className="content container">
                 <div  className="list">
-                    {TASKS.map(task => (
+                    {tasks && tasks.map((task: any) => (
                         <Task
                             task={task}
+                            key={task.key}
                             onUpdate={onUpdate}
                             onRemove={() => onRemove(task)}
                         />
