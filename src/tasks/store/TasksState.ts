@@ -1,5 +1,5 @@
 export interface TasksState {
-    list: any[] | undefined;
+    list: any[];
     loaded: boolean;
     loading: boolean;
 }

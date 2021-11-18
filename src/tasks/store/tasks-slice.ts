@@ -4,7 +4,7 @@ import { reducers } from './tasks-reducers';
 import { TasksState } from './TasksState';
 
 export const initialState: TasksState = {
-    list: undefined,
+    list: [],
     loaded: false,
     loading: false,
 };
