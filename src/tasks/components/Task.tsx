@@ -2,14 +2,30 @@ import { useState } from 'react';
 import styles from './Task.module.css';
 
 function Task({ task, onUpdate, onRemove }: { task: any; onUpdate: (task: any) => void; onRemove: () => void; }) {
+    const [description, setDescription] = useState(task.description);
+    const [isCompleted, setIsCompleted] = useState(task.isCompleted);
     const [isEditing, setIsEditing] = useState(false);
 
+    const inputChange = (e: any) => setDescription(e.target.value);
     const toggleIsEditing = () => setIsEditing(oldValue => !oldValue);
 
     const toggleIsCompleted = () => {
+        setIsCompleted((oldValue: boolean) => !oldValue);
+
         const clone = {
             ...task,
-            isCompleted: !task.isCompleted
+            isCompleted: !isCompleted
+        };
+
+        onUpdate(clone);
+    };
+
+    const submit = (e: any) => {
+        e.preventDefault();
+
+        const clone = {
+            ...task,
+            description
         };
 
         onUpdate(clone);
@@ -24,11 +40,12 @@ function Task({ task, onUpdate, onRemove }: { task: any; onUpdate: (task: any) =
 
                     <div className={styles.col}>
                         <div className={styles.description}>
-                            <form>
+                            <form onSubmit={submit}>
                                 <input
                                     type="text"
                                     className={styles.input}
-                                    value={task.description}
+                                    value={description}
+                                    onChange={inputChange}
                                 />
                             </form>
                         </div>
