@@ -8,13 +8,13 @@
     margin-top: 60px;
 }
 
-.list__empty,
-.list__loading {
+.empty,
+.loading {
     font-size: 24px;
     color: var(--secondary-text-color);
 }
 
-.list__loading {
+.loading {
     text-align: center;
 }
 
@@ -27,8 +27,8 @@
         margin-top: 40px;
     }
 
-    .list__empty,
-    .list__loading {
+    .empty,
+    .loading {
         font-size: 18px;
     }
 }   

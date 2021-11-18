@@ -1,9 +1,9 @@
-import './Tasks.css';
 import Task from '../components/Task';
 import TaskForm from '../components/TaskForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchTasks } from '../store/tasks-actions';
+import styles from './Tasks.module.css';
 
 function Tasks() {
     const dispatch = useDispatch();
@@ -24,26 +24,24 @@ function Tasks() {
 
     return (
         <div>
-            <div className="header">
+            <div className={styles.header}>
                 <div className="container">
                     <TaskForm />
                 </div>
             </div>
 
-            <div className="content container">
-                <div  className="list">
+            <div className={[styles.content, 'container'].join(' ')}>
+                <div  className={styles.list}>
                     {loading &&
-                         <div className="list__loading">
+                         <div className={styles.loading}>
                             <i className="fa fa-spinner fa-spin"></i>
                             Loading your tasks..
                         </div>
                     }
 
                     {!loading && !tasks.length &&
-                        <div className="list__empty">
-                            <p>
-                                No tasks here. You are either a great doer, or a great procrastinator.
-                            </p>
+                        <div className={styles.empty}>
+                            No tasks here. You are either a great doer, or a great procrastinator.
                         </div>
                     }
 
