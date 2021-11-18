@@ -37,6 +37,12 @@ button:first-child {
     margin-left: 0
 }
 
+.input {
+    border: none;
+    padding: 0;
+    outline: none;
+}
+
 .description {
     font-size: 24px;
     padding-left: 24px;

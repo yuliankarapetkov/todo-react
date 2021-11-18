@@ -1,27 +1,41 @@
-import './Task.css';
+import { useState } from 'react';
+import styles from './Task.module.css';
 
-function Task({ task }: { task: any; }) {
-    const isEditing = false;
+function Task({ task, onUpdate, onRemove }: { task: any; onUpdate: (task: any) => void; onRemove: () => void; }) {
+    const [isEditing, setIsEditing] = useState(false);
+
+    const toggleIsEditing = () => setIsEditing(oldValue => !oldValue);
+
+    const toggleIsCompleted = () => {
+        const clone = {
+            ...task,
+            isCompleted: !task.isCompleted
+        };
+
+        onUpdate(clone);
+    };
 
     return (
         <>
             {isEditing &&
-                <div className="task">
-                    <div className="col">
+                <div className={styles.task}>
+                    <div className={styles.col}>
                     </div>
 
-                    <div className="col">
-                        <div className="description">
+                    <div className={styles.col}>
+                        <div className={styles.description}>
                             <form>
                                 <input
-                                    type="text" 
+                                    type="text"
+                                    className={styles.input}
+                                    value={task.description}
                                 />
                             </form>
                         </div>
                     </div>
 
-                    <div className="col">
-                        <button>
+                    <div className={styles.col}>
+                        <button type="button" onClick={toggleIsEditing}>
                             <i className="fas fa-times"></i>
                         </button>
                     </div>
@@ -29,25 +43,25 @@ function Task({ task }: { task: any; }) {
             }
 
             {!isEditing &&
-                <div className="task">
-                    <div className="col">
-                        <button>
+                <div className={styles.task}>
+                    <div className={styles.col}>
+                        <button type="button" onClick={toggleIsCompleted}>
                             <i className="fas fa-check"></i>
                         </button>
                     </div>
 
-                    <div className="col">
-                        <div className="description">
+                    <div className={styles.col}>
+                        <div className={styles.description}>
                             {task.description}
                         </div>
                     </div>
 
-                    <div className="col">
-                        <button>
+                    <div className={styles.col}>
+                        <button type="button" onClick={onRemove}>
                             <i className="fas fa-trash"></i>
                         </button>
 
-                        <button>
+                        <button type="button" onClick={toggleIsEditing}>
                             <i className="fas fa-pen"></i>
                         </button>
                     </div>
