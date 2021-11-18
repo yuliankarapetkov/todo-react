@@ -1,9 +1,8 @@
-import Task from '../components/Task';
-import TaskForm from '../components/TaskForm';
+import { Task, TaskForm } from '../../components';
+import { fetchTasks } from '../../store/tasks-actions';
+import styles from './Tasks.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchTasks } from '../store/tasks-actions';
-import styles from './Tasks.module.css';
 
 function Tasks() {
     const dispatch = useDispatch();
