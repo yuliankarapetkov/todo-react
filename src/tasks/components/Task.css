@@ -1,0 +1,65 @@
+.task {
+    display: flex;
+    padding: 16px 0;
+    border-top: 1px solid var(--divider-color);
+    border-bottom: 1px solid var(--divider-color);
+}
+
+col {
+    display: flex;
+    align-items: center;
+}
+
+col:nth-child(2) {
+    flex: 1;
+    overflow: hidden;
+}
+
+button {
+    /* @include circButton(40px); */
+
+    background-color: var(--light-primary-color);
+    margin-left: 6px;
+}
+
+button:hover,
+button.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+button:first-child {
+    margin-left: 0
+}
+
+.description {
+    font-size: 24px;
+    padding-left: 24px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+input[type=text] {
+    border: none;
+    padding: 0;
+    outline: none;
+}
+
+@media (max-width: 768px) {
+    .task {
+        padding: 16px 0;
+    }
+
+    button {
+        /* @include circButton(30px); */
+        font-size: 12px;
+        margin-left: 6px;
+    }
+
+    .description {
+        font-size: 18px;
+        padding-left: 16px;
+    }
+}
