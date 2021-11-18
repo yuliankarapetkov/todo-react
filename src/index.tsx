@@ -1,22 +1,27 @@
+import './index.css';
+
+import Header from './app/components/Header';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
+import Tasks from './tasks/pages/Tasks';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Tasks from './tasks/pages/Tasks';
-import Header from './app/components/Header';
+
+import reportWebVitals from './reportWebVitals';
+import store from './app/store';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Header />
+    <Provider store={store}>
+      <BrowserRouter>
+        <Header />
 
-      <Routes>
-        <Route path="/tasks" element={<Tasks />} />
-      </Routes>
-    </BrowserRouter>
+        <Routes>
+          <Route path="/tasks" element={<Tasks />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
