@@ -1,22 +1,27 @@
 .task {
     display: flex;
+    align-items: center;
     padding: 16px 0;
     border-top: 1px solid var(--divider-color);
     border-bottom: 1px solid var(--divider-color);
 }
 
-col {
+.col {
     display: flex;
     align-items: center;
 }
 
-col:nth-child(2) {
+.col:nth-child(2) {
     flex: 1;
     overflow: hidden;
 }
 
 button {
-    /* @include circButton(40px); */
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
 
     background-color: var(--light-primary-color);
     margin-left: 6px;
@@ -53,7 +58,9 @@ input[type=text] {
     }
 
     button {
-        /* @include circButton(30px); */
+        height: 30px;
+        width: 30px;
+
         font-size: 12px;
         margin-left: 6px;
     }

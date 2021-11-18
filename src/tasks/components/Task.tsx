@@ -1,6 +1,6 @@
 import './Task.css';
 
-function Task() {
+function Task({ task }: { task: any; }) {
     const isEditing = false;
 
     return (
@@ -21,7 +21,7 @@ function Task() {
                     </div>
 
                     <div className="col">
-                        <button className="todo-item__button">
+                        <button>
                             <i className="fas fa-times"></i>
                         </button>
                     </div>
@@ -31,25 +31,23 @@ function Task() {
             {!isEditing &&
                 <div className="task">
                     <div className="col">
-                        <button
-                            className="todo-item__button"
-                        >
+                        <button>
                             <i className="fas fa-check"></i>
                         </button>
                     </div>
 
                     <div className="col">
-                        <div className="todo-item__description">
-                            {/* {{ item.description }} */}
+                        <div className="description">
+                            {task.description}
                         </div>
                     </div>
 
                     <div className="col">
-                        <button className="todo-item__button">
+                        <button>
                             <i className="fas fa-trash"></i>
                         </button>
 
-                        <button className="todo-item__button">
+                        <button>
                             <i className="fas fa-pen"></i>
                         </button>
                     </div>

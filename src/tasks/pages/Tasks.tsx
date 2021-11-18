@@ -1,6 +1,25 @@
+import Task from '../components/Task';
 import TaskForm from '../components/TaskForm';
 
 import './Tasks.css';
+
+const TASKS = [
+    {
+        description: 'Do something',
+        isCompleted: false,
+        key: 'v1'
+    },
+    {
+        description: 'Do something else',
+        isCompleted: false,
+        key: 'v2'
+    },
+    {
+        description: 'Do another thing',
+        isCompleted: false,
+        key: 'v3'
+    },
+];
 
 function Tasks() {
   return (
@@ -11,6 +30,9 @@ function Tasks() {
 
         <div className="content container">
             <div  className="list">
+                {TASKS.map(task => (
+                    <Task task={task} />
+                ))}
                 {/* <div *ngIf="todos$ | async as todos; else loading">
                     <div *ngIf="todos.length">
                         <todos-todo-item
