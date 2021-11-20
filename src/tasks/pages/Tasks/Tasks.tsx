@@ -1,5 +1,5 @@
 import { Task, TaskForm } from '../../components';
-import { fetchTasks } from '../../store/tasks-actions';
+import { actions } from '../../store/tasks-slice';
 import styles from './Tasks.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
@@ -10,7 +10,8 @@ function Tasks() {
     const loading = useSelector((state: any) => state.tasks.loading);
 
     useEffect(() => {
-        dispatch(fetchTasks());
+        dispatch(actions.getTasks());
+        // dispatch(fetchTasks());
     }, []);
 
     const onCreate = (description: string) => {
