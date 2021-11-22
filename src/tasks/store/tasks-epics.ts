@@ -3,35 +3,17 @@ import { Epic } from 'redux-observable';
 import { actions } from './tasks-slice';
 import { from, of } from 'rxjs';
 import { filter, catchError, map, mergeMap } from 'rxjs/operators';
+import { firestore } from '../../core/firebase';
 
 const { getTasks, getTasksSuccess, getTasksFailure } = actions;
 
 export type TaskEpic = Epic<AnyAction, AnyAction, ReturnType<any>>;
 
-const MOCK_TASKS: any[] = [
-    {
-        description: 'Do something',
-        isCompleted: false,
-        key: 'v1'
-    },
-    {
-        description: 'Do something else',
-        isCompleted: false,
-        key: 'v2'
-    },
-    {
-        description: 'Do another thing',
-        isCompleted: false,
-        key: 'v3'
-    },
-  ];
-
 const fetchData = async (): Promise<any[]> => {
-    return new Promise((resolve: any) => {
-        setTimeout(() => {
-            resolve(MOCK_TASKS)
-        }, 2000);
-    });
+    const snapshot = await firestore.collection('tasks').get();
+    const data = snapshot.docs.map(doc => doc.data());
+
+    return data;
 };
 
 export const getTasks$: TaskEpic = action$ => 
