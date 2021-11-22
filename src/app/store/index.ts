@@ -2,10 +2,10 @@ import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import { configureStore,  } from '@reduxjs/toolkit';
 import tasksSlice from '../../tasks/store/tasks-slice';
 
-import { getTasks$ } from '../../tasks/store/tasks-epics';
+import { epics as tasksEpics } from '../../tasks/store/tasks-epics';
 
 const epics = combineEpics(
-    getTasks$
+    ...tasksEpics,
 );
 
 const epicMiddleware = createEpicMiddleware();
