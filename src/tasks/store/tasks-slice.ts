@@ -6,7 +6,9 @@ import { TasksState } from './TasksState';
 export const initialState: TasksState = {
     list: [],
     loaded: false,
-    loading: false,
+
+    getTasksLoading: false,
+    createTaskLoading: false,
 };
 
 const slice = createSlice({

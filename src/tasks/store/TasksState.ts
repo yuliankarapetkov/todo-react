@@ -1,5 +1,7 @@
 export interface TasksState {
     list: any[];
     loaded: boolean;
-    loading: boolean;
+
+    getTasksLoading: boolean;
+    createTaskLoading: boolean;
 }

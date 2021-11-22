@@ -7,11 +7,10 @@ import { useEffect } from 'react';
 function Tasks() {
     const dispatch = useDispatch();
     const tasks = useSelector((state: any) => state.tasks.list);
-    const loading = useSelector((state: any) => state.tasks.loading);
+    const loading = useSelector((state: any) => state.tasks.getTasksLoading);
 
     useEffect(() => {
         dispatch(actions.getTasks());
-        // dispatch(fetchTasks());
     }, []);
 
     const onCreate = (description: string) => {
