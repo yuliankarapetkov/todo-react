@@ -1,4 +1,8 @@
-import * as functions from "firebase-functions";
+import { onCreateTask } from './firestore';
+
+export { 
+    onCreateTask
+};
 
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
