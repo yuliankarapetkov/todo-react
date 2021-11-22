@@ -1,7 +1,7 @@
 import { onCreateTask } from './firestore';
 
-export { 
-    onCreateTask
+export {
+    onCreateTask,
 };
 
 // // Start writing Firebase Functions
