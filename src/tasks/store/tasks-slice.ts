@@ -10,6 +10,7 @@ export const initialState: TasksState = {
     getTasksLoading: false,
     createTaskLoading: false,
     updateTaskLoading: false,
+    removeTaskLoading: false
 };
 
 const slice = createSlice({

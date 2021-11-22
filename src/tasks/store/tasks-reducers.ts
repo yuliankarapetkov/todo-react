@@ -82,4 +82,27 @@ export const reducers = {
             updateTaskLoading: false,
         }
     },
+
+    // Remove Task
+    removeTask(state: TasksState, action: { payload: string; }) {
+        return {
+            ...state,
+            removeTaskLoading: true
+        }
+    },
+    removeTaskSuccess(state: TasksState, action: { payload: string; }) {
+        const id = action.payload;
+
+        return {
+            ...state,
+            removeTaskLoading: false,
+            list: state.list.filter(t => t.id !== id)
+        };
+    },
+    removeTaskFailure(state: TasksState) {
+        return {
+            ...state,
+            removeTaskLoading: false,
+        }
+    },
 };

@@ -28,3 +28,9 @@ export const updateTask = async (id: string, { description, isCompleted }: { des
         ...(isCompleted !== null ? { isCompleted } : null)
     })
 };
+
+export const removeTask = async (id: string): Promise<any> => {
+    const taskRef = firestore.doc(`tasks/${id}`);
+
+    return taskRef.delete();
+};

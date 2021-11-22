@@ -5,4 +5,5 @@ export interface TasksState {
     getTasksLoading: boolean;
     createTaskLoading: boolean;
     updateTaskLoading: boolean;
+    removeTaskLoading: boolean;
 }

@@ -19,7 +19,7 @@ export const getTasks$: TaskEpic = action$ =>
         )
     );
 
-    export const createTask$: TaskEpic = action$ => 
+export const createTask$: TaskEpic = action$ => 
     action$.pipe(
         filter(actions.createTask.match),
         mergeMap(({ payload: description }) =>
@@ -43,8 +43,21 @@ export const updateTask$: TaskEpic = action$ =>
         )
     );
 
+export const removeTask$: TaskEpic = action$ => 
+    action$.pipe(
+        filter(actions.removeTask.match),
+        mergeMap(({ payload: id }) =>
+            from(tasksClient.removeTask(id))
+                .pipe(
+                    map(() => actions.removeTaskSuccess(id)),
+                    catchError(() => of(actions.removeTaskFailure()))
+                )
+        )
+    );
+
 export const epics = [
     getTasks$,
     createTask$,
     updateTask$,
+    removeTask$,
 ];

@@ -15,10 +15,7 @@ function Tasks() {
 
     const onCreate = (description: string) => dispatch(actions.createTask(description));
     const onUpdate = (task: any) => dispatch(actions.updateTask(task));
-
-    const onRemove = (task: any) => {
-        console.log('removed', task);
-    };
+    const onRemove = (task: any) => dispatch(actions.removeTask(task.id));
 
     return (
         <div>
