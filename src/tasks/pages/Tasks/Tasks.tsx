@@ -13,13 +13,8 @@ function Tasks() {
         dispatch(actions.getTasks());
     }, []);
 
-    const onCreate = (description: string) => {
-        dispatch(actions.createTask(description));
-    };
-
-    const onUpdate = (task: any) => {
-        console.log('updated', task);
-    };
+    const onCreate = (description: string) => dispatch(actions.createTask(description));
+    const onUpdate = (task: any) => dispatch(actions.updateTask(task));
 
     const onRemove = (task: any) => {
         console.log('removed', task);

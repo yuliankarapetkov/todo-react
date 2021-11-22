@@ -64,7 +64,7 @@ function Task({ task, onUpdate, onRemove }: { task: any; onUpdate: (task: any) =
             {!isEditing &&
                 <div className={styles.task}>
                     <div className={styles.col}>
-                        <button type="button" onClick={toggleIsCompleted}>
+                        <button className={task.isCompleted ? styles.active : ''} type="button" onClick={toggleIsCompleted}>
                             <i className="fas fa-check"></i>
                         </button>
                     </div>

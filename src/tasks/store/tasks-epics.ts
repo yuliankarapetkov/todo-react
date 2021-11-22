@@ -19,7 +19,7 @@ export const getTasks$: TaskEpic = action$ =>
         )
     );
 
-export const createTask$: TaskEpic = action$ => 
+    export const createTask$: TaskEpic = action$ => 
     action$.pipe(
         filter(actions.createTask.match),
         mergeMap(({ payload: description }) =>
@@ -31,7 +31,20 @@ export const createTask$: TaskEpic = action$ =>
         )
     );
 
+export const updateTask$: TaskEpic = action$ => 
+    action$.pipe(
+        filter(actions.updateTask.match),
+        mergeMap(({ payload: { id, description, isCompleted } }) =>
+            from(tasksClient.updateTask(id, { description, isCompleted }))
+                .pipe(
+                    map((task: any) => actions.updateTaskSuccess({ id, description, isCompleted })),
+                    catchError(() => of(actions.updateTaskFailure()))
+                )
+        )
+    );
+
 export const epics = [
     getTasks$,
     createTask$,
+    updateTask$,
 ];

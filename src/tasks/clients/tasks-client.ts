@@ -24,7 +24,7 @@ export const updateTask = async (id: string, { description, isCompleted }: { des
     const taskRef = firestore.doc(`tasks/${id}`);
 
     return taskRef.update({
-        ...(description ? { description } : null),
-        ...(isCompleted ? { isCompleted } : null)
+        ...(description !== null ? { description } : null),
+        ...(isCompleted !== null ? { isCompleted } : null)
     })
 };

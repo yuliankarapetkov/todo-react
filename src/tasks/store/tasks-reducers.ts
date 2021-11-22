@@ -51,4 +51,35 @@ export const reducers = {
             createTaskLoading: false,
         }
     },
+
+    // Update Task
+    updateTask(state: TasksState, action: { payload: { id: string, description?: string; isCompleted?: boolean; }; }) {
+        return {
+            ...state,
+            updateTaskLoading: true
+        }
+    },
+    updateTaskSuccess(state: TasksState, action: { payload: { id: string, description?: string; isCompleted?: boolean; }; }) {
+        const task = action.payload;
+
+        return {
+            ...state,
+            updateTaskLoading: false,
+            list: state.list.map(t => 
+                t.id !== task.id 
+                    ? t 
+                    : { 
+                        ...t,
+                        description: task.description || t.description,
+                        isCompleted: task.isCompleted !== null ? task.isCompleted : t.isCompleted
+                    }
+            )
+        };
+    },
+    updateTaskFailure(state: TasksState) {
+        return {
+            ...state,
+            updateTaskLoading: false,
+        }
+    },
 };
