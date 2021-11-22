@@ -14,15 +14,7 @@ function Tasks() {
     }, []);
 
     const onCreate = (description: string) => {
-        console.log('created', description);
-
-        const task = {
-            description,
-            isCompleted: false,
-            id: Date.now()
-        };
-
-        dispatch(actions.createTask(task));
+        dispatch(actions.createTask(description));
     };
 
     const onUpdate = (task: any) => {

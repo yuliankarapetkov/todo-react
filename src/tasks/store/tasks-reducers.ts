@@ -27,7 +27,7 @@ export const reducers = {
     },
     
     // Create Task
-    createTask(state: TasksState, action: { payload: any; }) {
+    createTask(state: TasksState, action: { payload: string; }) {
         return {
             ...state,
             createTaskLoading: true

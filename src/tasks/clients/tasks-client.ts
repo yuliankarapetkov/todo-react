@@ -7,8 +7,15 @@ export const getTasks = async (): Promise<any[]> => {
     return data;
 };
 
-export const createTask = async (task: any): Promise<any> => {
+export const createTask = async (description: string): Promise<any> => {
     const tasksRef = firestore.collection('tasks');
 
-    return tasksRef.add(task);
+    const task = {
+        description,
+        isCompleted: false
+    };
+
+    const { id } = await tasksRef.add(task);
+
+    return { ...task, id };
 };

@@ -10,7 +10,7 @@ export type TaskEpic = Epic<AnyAction, AnyAction, ReturnType<any>>;
 export const getTasks$: TaskEpic = action$ => 
     action$.pipe(
         filter(actions.getTasks.match),
-        mergeMap((action) =>
+        mergeMap(() =>
             from(tasksClient.getTasks())
                 .pipe(
                     map((data: any[]) => actions.getTasksSuccess(data)),
@@ -22,10 +22,10 @@ export const getTasks$: TaskEpic = action$ =>
 export const createTask$: TaskEpic = action$ => 
     action$.pipe(
         filter(actions.createTask.match),
-        mergeMap(({ payload }) =>
-            from(tasksClient.createTask(payload))
+        mergeMap(({ payload: description }) =>
+            from(tasksClient.createTask(description))
                 .pipe(
-                    map((data: any[]) => actions.createTaskSuccess(payload)),
+                    map((task: any) => actions.createTaskSuccess(task)),
                     catchError(() => of(actions.createTaskFailure()))
                 )
         )
