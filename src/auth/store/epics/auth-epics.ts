@@ -14,7 +14,7 @@ export const getAuthState$: AuthEpic = action$ =>
             from(authClient.onAuthStateChanged())
                 .pipe(
                     take(1),
-                    map((data: any) => actions.getAuthStateSuccess(!!data)),
+                    map((userId: string | null) => actions.getAuthStateSuccess(userId)),
                     catchError(() => of(actions.getAuthStateFailure()))
                 )
         )
@@ -26,7 +26,7 @@ export const signIn$: AuthEpic = action$ =>
         mergeMap(() =>
             from(authClient.signIn())
                 .pipe(
-                    map(() => actions.signInSuccess()),
+                    map((userId: string | null) => actions.signInSuccess(userId)),
                     catchError(() => of(actions.signInFailure()))
                 )
         )

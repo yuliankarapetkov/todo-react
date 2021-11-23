@@ -8,11 +8,13 @@ export const reducers = {
             getAuthStateLoading: true,
         }
     },
-    getAuthStateSuccess(state: AuthState, action: { payload: boolean }): AuthState {
-        const isAuthenticated = action.payload;
+    getAuthStateSuccess(state: AuthState, action: { payload: string | null }): AuthState {
+        const userId = action.payload;
+        const isAuthenticated = !!userId;
 
         return {
             ...state,
+            userId,
             isAuthenticated,
             getAuthStateLoading: false,
             getAuthStateLoaded: true,
@@ -33,10 +35,14 @@ export const reducers = {
             signInLoading: true,
         }
     },
-    signInSuccess(state: AuthState): AuthState {
+    signInSuccess(state: AuthState, action: { payload: string | null }): AuthState {
+        const userId = action.payload;
+        const isAuthenticated = !!userId;
+
         return {
             ...state,
-            isAuthenticated: true,
+            userId,
+            isAuthenticated,
             signInLoading: false,
         };
     },
@@ -57,6 +63,7 @@ export const reducers = {
     signOutSuccess(state: AuthState): AuthState {
         return {
             ...state,
+            userId: null,
             isAuthenticated: false,
             signOutLoading: false,
         };

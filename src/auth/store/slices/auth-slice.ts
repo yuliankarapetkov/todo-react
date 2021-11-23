@@ -4,6 +4,7 @@ import { reducers } from '../reducers/auth-reducers';
 import { AuthState } from '../AuthState';
 
 const initialState: AuthState = {
+  userId: null,
   isAuthenticated: false,
 
   getAuthStateLoading: false,
