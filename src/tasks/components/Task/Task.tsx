@@ -54,7 +54,7 @@ function Task({ task, onUpdate, onRemove }: { task: any; onUpdate: (task: any) =
                     </div>
 
                     <div className={styles.col}>
-                        <button type="button" onClick={toggleIsEditing}>
+                        <button className={styles.button} type="button" onClick={toggleIsEditing}>
                             <i className="fas fa-times"></i>
                         </button>
                     </div>
@@ -64,7 +64,7 @@ function Task({ task, onUpdate, onRemove }: { task: any; onUpdate: (task: any) =
             {!isEditing &&
                 <div className={styles.task}>
                     <div className={styles.col}>
-                        <button className={task.isCompleted ? styles.active : ''} type="button" onClick={toggleIsCompleted}>
+                        <button className={[styles.button, task.isCompleted ? styles.active : ''].join(' ')} type="button" onClick={toggleIsCompleted}>
                             <i className="fas fa-check"></i>
                         </button>
                     </div>
@@ -76,11 +76,11 @@ function Task({ task, onUpdate, onRemove }: { task: any; onUpdate: (task: any) =
                     </div>
 
                     <div className={styles.col}>
-                        <button type="button" onClick={onRemove}>
+                        <button className={styles.button} type="button" onClick={onRemove}>
                             <i className="fas fa-trash"></i>
                         </button>
 
-                        <button type="button" onClick={toggleIsEditing}>
+                        <button className={styles.button} type="button" onClick={toggleIsEditing}>
                             <i className="fas fa-pen"></i>
                         </button>
                     </div>

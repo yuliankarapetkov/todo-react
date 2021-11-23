@@ -1,6 +1,7 @@
 import './index.css';
 
 import { Header } from './app/components';
+import { Login } from './auth/pages';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -20,6 +21,8 @@ ReactDOM.render(
         <Header />
 
         <Routes>
+          <Route path="/login" element={<Login />} />
+
           <Route path="/tasks" element={<Tasks />} />
         </Routes>
 
