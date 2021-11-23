@@ -20,3 +20,19 @@ export const slice = createSlice({
 });
 
 export const { actions } = slice;
+
+export const authMiddleware = (setFunction: (userId: string | null) => void) => {
+  return () => (next: any) => (action: any) => {
+    const actionTypes = [
+      actions.getAuthStateSuccess.type,
+      actions.signInSuccess.type
+    ];
+
+    if (actionTypes.includes(action.type)) {
+      const userId = action.payload;
+      setFunction(userId);
+    }
+
+    return next(action);
+  }
+};
