@@ -32,7 +32,20 @@ export const signIn$: AuthEpic = action$ =>
         )
     );
 
+export const signOut$: AuthEpic = action$ => 
+    action$.pipe(
+        filter(actions.signOut.match),
+        mergeMap(() =>
+            from(authClient.signOut())
+                .pipe(
+                    map(() => actions.signOutSuccess()),
+                    catchError(() => of(actions.signOutFailure()))
+                )
+        )
+    );
+
 export const epics = [
     getAuthState$,
     signIn$,
+    signOut$,
 ];

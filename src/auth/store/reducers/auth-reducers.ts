@@ -43,8 +43,28 @@ export const reducers = {
     signInFailure(state: AuthState): AuthState {
         return {
             ...state,
-            isAuthenticated: false,
             signInLoading: false,
+        }
+    },
+
+    // Sign Out
+    signOut(state: AuthState): AuthState {
+        return {
+            ...state,
+            signOutLoading: true,
+        }
+    },
+    signOutSuccess(state: AuthState): AuthState {
+        return {
+            ...state,
+            isAuthenticated: false,
+            signOutLoading: false,
+        };
+    },
+    signOutFailure(state: AuthState): AuthState {
+        return {
+            ...state,
+            signOutLoading: false,
         }
     },
 };
