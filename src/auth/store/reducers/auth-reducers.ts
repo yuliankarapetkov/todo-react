@@ -25,4 +25,26 @@ export const reducers = {
             getAuthStateLoaded: false,
         }
     },
+
+    // Sign In
+    signIn(state: AuthState): AuthState {
+        return {
+            ...state,
+            signInLoading: true,
+        }
+    },
+    signInSuccess(state: AuthState): AuthState {
+        return {
+            ...state,
+            isAuthenticated: true,
+            signInLoading: false,
+        };
+    },
+    signInFailure(state: AuthState): AuthState {
+        return {
+            ...state,
+            isAuthenticated: false,
+            signInLoading: false,
+        }
+    },
 };

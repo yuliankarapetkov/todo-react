@@ -20,6 +20,19 @@ export const getAuthState$: AuthEpic = action$ =>
         )
     );
 
+export const signIn$: AuthEpic = action$ => 
+    action$.pipe(
+        filter(actions.signIn.match),
+        mergeMap(() =>
+            from(authClient.signIn())
+                .pipe(
+                    map(() => actions.signInSuccess()),
+                    catchError(() => of(actions.signInFailure()))
+                )
+        )
+    );
+
 export const epics = [
     getAuthState$,
+    signIn$,
 ];

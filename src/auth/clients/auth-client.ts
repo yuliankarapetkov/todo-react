@@ -15,7 +15,7 @@ export const onAuthStateChanged = (): Observable<any> => {
     );
 };
 
-export const signInAnonymously = async (): Promise<any> => {
+export const signIn = async (): Promise<any> => {
     return auth.signInAnonymously();
 };
 
