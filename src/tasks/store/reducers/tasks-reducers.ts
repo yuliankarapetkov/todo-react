@@ -1,4 +1,4 @@
-import { TasksState } from "./TasksState";
+import { TasksState } from "../TasksState";
 
 export const reducers = {
     // Get Tasks

@@ -1,8 +1,8 @@
 import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import { configureStore,  } from '@reduxjs/toolkit';
-import tasksSlice from '../../tasks/store/tasks-slice';
+import tasksSlice from '../../tasks/store/slices/tasks-slice';
 
-import { epics as tasksEpics } from '../../tasks/store/tasks-epics';
+import { epics as tasksEpics } from '../../tasks/store/epics/tasks-epics';
 
 const epics = combineEpics(
     ...tasksEpics,

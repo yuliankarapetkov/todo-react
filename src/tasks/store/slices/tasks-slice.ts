@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { reducers } from './tasks-reducers';
+import { reducers } from '../reducers/tasks-reducers';
 
-import { TasksState } from './TasksState';
+import { TasksState } from '../TasksState';
 
 export const initialState: TasksState = {
     list: [],

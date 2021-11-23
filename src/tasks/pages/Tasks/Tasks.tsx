@@ -1,5 +1,5 @@
 import { Task, TaskForm } from '../../components';
-import { actions } from '../../store/tasks-slice';
+import { actions } from '../../store';
 import styles from './Tasks.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
