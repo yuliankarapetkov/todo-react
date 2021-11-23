@@ -3,7 +3,7 @@ import { reducers } from '../reducers/tasks-reducers';
 
 import { TasksState } from '../TasksState';
 
-export const initialState: TasksState = {
+const initialState: TasksState = {
     list: [],
     loaded: false,
 
@@ -13,12 +13,10 @@ export const initialState: TasksState = {
     removeTaskLoading: false
 };
 
-const slice = createSlice({
+export const slice = createSlice({
   name: 'tasks',
   initialState,
   reducers,
 });
 
 export const { actions } = slice;
-
-export default slice;

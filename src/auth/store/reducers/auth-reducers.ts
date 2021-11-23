@@ -1,0 +1,28 @@
+import { AuthState } from "../AuthState";
+
+export const reducers = {
+    // Get Auth State
+    getAuthState(state: AuthState): AuthState {
+        return {
+            ...state,
+            getAuthStateLoading: true,
+        }
+    },
+    getAuthStateSuccess(state: AuthState, action: { payload: boolean }): AuthState {
+        const isAuthenticated = action.payload;
+
+        return {
+            ...state,
+            isAuthenticated,
+            getAuthStateLoading: false,
+            getAuthStateLoaded: true,
+        };
+    },
+    getAuthStateFailure(state: AuthState): AuthState {
+        return {
+            ...state,
+            getAuthStateLoading: false,
+            getAuthStateLoaded: false,
+        }
+    },
+};
