@@ -1,33 +1,19 @@
 import './index.css';
 
-import { Header } from './app/components';
-import { Login } from './auth/pages';
+import App from './App';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { Tasks } from './tasks/pages';
-
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
 import reportWebVitals from './reportWebVitals';
 import store from './app/store';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-
       <BrowserRouter>
-
-        <Header />
-
-        <Routes>
-          <Route path="/login" element={<Login />} />
-
-          <Route path="/tasks" element={<Tasks />} />
-        </Routes>
-
+        <App />
       </BrowserRouter>
-
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
