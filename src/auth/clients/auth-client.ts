@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { auth } from '../../core/firebase';
+import { auth } from '../../app/firebase';
 
 export const onAuthStateChanged = (): Observable<any> => {
     return new Observable(

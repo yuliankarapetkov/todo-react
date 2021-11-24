@@ -1,4 +1,4 @@
-import { firestore } from '../../core/firebase';
+import { firestore } from '../../app/firebase';
 
 let userId: string | null = null;
 
