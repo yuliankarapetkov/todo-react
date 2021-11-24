@@ -1,5 +1,7 @@
+import { Task } from '../models';
+
 export interface TasksState {
-    list: any[];
+    list: Task[];
     loaded: boolean;
 
     getTasksLoading: boolean;

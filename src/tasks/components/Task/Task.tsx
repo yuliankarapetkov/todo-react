@@ -1,5 +1,5 @@
 import { Task as TaskModel } from '../../models';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styles from './Task.module.css';
 
 interface Props {
@@ -13,31 +13,30 @@ const Task: React.FC<Props> = ({ task, onUpdate, onRemove }) => {
     const [isCompleted, setIsCompleted] = useState(task.isCompleted);
     const [isEditing, setIsEditing] = useState(false);
 
-    const inputChange = (e: any) => setDescription(e.target.value);
+    const inputChange = (e: React.ChangeEvent<HTMLInputElement>) => setDescription(e.target.value);
     const toggleIsEditing = () => setIsEditing(oldValue => !oldValue);
+
+    const update = (updated: { isCompleted?: boolean; description?: string }) => {
+        const clone: TaskModel = {
+            ...task,
+            ...updated
+        };
+
+        onUpdate(clone);
+    }
 
     const toggleIsCompleted = () => {
         setIsCompleted((oldValue: boolean) => !oldValue);
 
-        const clone: TaskModel = {
-            ...task,
-            isCompleted: !isCompleted
-        };
-
-        onUpdate(clone);
+        update({ isCompleted: !isCompleted });
     };
 
-    const submit = (e: any) => {
+    const submit = (e: React.FormEvent) => {
         e.preventDefault();
 
         setIsEditing(false);
 
-        const clone: TaskModel = {
-            ...task,
-            description
-        };
-
-        onUpdate(clone);
+        update({ description });
     };
 
     return (

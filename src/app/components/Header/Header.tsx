@@ -1,7 +1,7 @@
 import { actions } from '../../../auth/store';
 import styles from './Header.module.css';
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 const parkGitHubUrl = 'https://github.com/r-park';
 const parkDemoUrl = 'https://ng2-todo-app.firebaseapp.com/';
@@ -15,7 +15,7 @@ const Header: React.FC = () => {
 
     const signOut = () => dispatch(actions.signOut());
 
-    const showInfo = (e: any) => {
+    const showInfo = (e: React.MouseEvent) => {
         e.preventDefault();
 
         setInfoVisible(oldValue => !oldValue);

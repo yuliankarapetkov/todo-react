@@ -16,9 +16,6 @@ export const getTasks = async (): Promise<any[]> => {
     const snapshot = await tasksRef.get();
     const data = snapshot.docs.map(doc => doc.data());
 
-    const uid = getUserId();
-    console.log('uid', uid);
-
     return data;
 };
 
@@ -38,7 +35,9 @@ export const createTask = async (description: string): Promise<any> => {
 export const updateTask = async (id: string, { description, isCompleted }: { description?: string; isCompleted?: boolean; }): Promise<any> => {
     const tasksRef = getTasksRef();
 
-    const taskRef = tasksRef.doc(`tasks/${id}`);
+    console.log('update', { id, description, isCompleted })
+
+    const taskRef = tasksRef.doc(id);
 
     return taskRef.update({
         ...(description !== null ? { description } : null),
@@ -49,7 +48,7 @@ export const updateTask = async (id: string, { description, isCompleted }: { des
 export const removeTask = async (id: string): Promise<any> => {
     const tasksRef = getTasksRef();
 
-    const taskRef = tasksRef.doc(`tasks/${id}`);
+    const taskRef = tasksRef.doc(id);
 
     return taskRef.delete();
 };

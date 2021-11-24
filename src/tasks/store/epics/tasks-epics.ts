@@ -37,7 +37,7 @@ export const updateTask$: TaskEpic = action$ =>
         mergeMap(({ payload: { id, description, isCompleted } }) =>
             from(tasksClient.updateTask(id, { description, isCompleted }))
                 .pipe(
-                    map((task: any) => actions.updateTaskSuccess({ id, description, isCompleted })),
+                    map(() => actions.updateTaskSuccess({ id, description, isCompleted })),
                     catchError(() => of(actions.updateTaskFailure()))
                 )
         )

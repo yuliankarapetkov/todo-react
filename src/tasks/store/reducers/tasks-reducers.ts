@@ -1,39 +1,47 @@
-import { TasksState } from "../TasksState";
+import { PayloadAction } from '@reduxjs/toolkit';
+import { Task } from '../../models';
+import { TasksState } from '../TasksState';
+
+interface UpdateTaskPayload {
+    id: string;
+    description?: string;
+    isCompleted?: boolean;
+}
 
 export const reducers = {
     // Get Tasks
-    getTasks(state: TasksState) {
+    getTasks(state: TasksState): TasksState {
         return {
             ...state,
-            loading: true
-        }
+            getTasksLoading: true
+        };
     },
-    getTasksSuccess(state: TasksState, action: { payload: any[]; }) {
+    getTasksSuccess(state: TasksState, action: PayloadAction<Task[]>): TasksState {
         const list = action.payload;
 
         return {
             ...state,
-            loading: false,
+            getTasksLoading: false,
             loaded: true,
             list
         };
     },
-    getTasksFailure(state: TasksState) {
+    getTasksFailure(state: TasksState): TasksState {
         return {
             ...state,
-            loading: false,
+            getTasksLoading: false,
             loaded: false,
         }
     },
     
     // Create Task
-    createTask(state: TasksState, action: { payload: string; }) {
+    createTask(state: TasksState, action: PayloadAction<string>): TasksState {
         return {
             ...state,
             createTaskLoading: true
         }
     },
-    createTaskSuccess(state: TasksState, action: { payload: any; }) {
+    createTaskSuccess(state: TasksState, action: PayloadAction<Task>): TasksState {
         const task = action.payload;
 
         return {
@@ -45,7 +53,7 @@ export const reducers = {
             ]
         };
     },
-    createTaskFailure(state: TasksState) {
+    createTaskFailure(state: TasksState): TasksState {
         return {
             ...state,
             createTaskLoading: false,
@@ -53,13 +61,13 @@ export const reducers = {
     },
 
     // Update Task
-    updateTask(state: TasksState, action: { payload: { id: string, description?: string; isCompleted?: boolean; }; }) {
+    updateTask(state: TasksState, action: PayloadAction<UpdateTaskPayload>): TasksState {
         return {
             ...state,
             updateTaskLoading: true
         }
     },
-    updateTaskSuccess(state: TasksState, action: { payload: { id: string, description?: string; isCompleted?: boolean; }; }) {
+    updateTaskSuccess(state: TasksState, action: PayloadAction<UpdateTaskPayload>): TasksState {
         const task = action.payload;
 
         return {
@@ -70,13 +78,13 @@ export const reducers = {
                     ? t 
                     : { 
                         ...t,
-                        description: task.description || t.description,
-                        isCompleted: task.isCompleted !== null ? task.isCompleted : t.isCompleted
+                        description: task.description ?? t.description,
+                        isCompleted: task.isCompleted ?? t.isCompleted
                     }
             )
         };
     },
-    updateTaskFailure(state: TasksState) {
+    updateTaskFailure(state: TasksState): TasksState {
         return {
             ...state,
             updateTaskLoading: false,
@@ -84,13 +92,13 @@ export const reducers = {
     },
 
     // Remove Task
-    removeTask(state: TasksState, action: { payload: string; }) {
+    removeTask(state: TasksState, action: PayloadAction<string>): TasksState {
         return {
             ...state,
             removeTaskLoading: true
         }
     },
-    removeTaskSuccess(state: TasksState, action: { payload: string; }) {
+    removeTaskSuccess(state: TasksState, action: PayloadAction<string>): TasksState {
         const id = action.payload;
 
         return {
@@ -99,7 +107,7 @@ export const reducers = {
             list: state.list.filter(t => t.id !== id)
         };
     },
-    removeTaskFailure(state: TasksState) {
+    removeTaskFailure(state: TasksState): TasksState {
         return {
             ...state,
             removeTaskLoading: false,
