@@ -1,7 +1,14 @@
+import { Task as TaskModel } from '../../models';
 import { useState } from 'react';
 import styles from './Task.module.css';
 
-function Task({ task, onUpdate, onRemove }: { task: any; onUpdate: (task: any) => void; onRemove: () => void; }) {
+interface Props {
+    task: TaskModel;
+    onUpdate: (task: TaskModel) => void;
+    onRemove: () => void;
+}
+
+const Task: React.FC<Props> = ({ task, onUpdate, onRemove }) => {
     const [description, setDescription] = useState(task.description);
     const [isCompleted, setIsCompleted] = useState(task.isCompleted);
     const [isEditing, setIsEditing] = useState(false);
@@ -12,7 +19,7 @@ function Task({ task, onUpdate, onRemove }: { task: any; onUpdate: (task: any) =
     const toggleIsCompleted = () => {
         setIsCompleted((oldValue: boolean) => !oldValue);
 
-        const clone = {
+        const clone: TaskModel = {
             ...task,
             isCompleted: !isCompleted
         };
@@ -25,7 +32,7 @@ function Task({ task, onUpdate, onRemove }: { task: any; onUpdate: (task: any) =
 
         setIsEditing(false);
 
-        const clone = {
+        const clone: TaskModel = {
             ...task,
             description
         };
