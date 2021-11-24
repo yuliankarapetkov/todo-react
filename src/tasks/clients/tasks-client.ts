@@ -1,8 +1,19 @@
 import { firestore } from '../../app/firebase';
 import { getUserId } from '../../app/utils';
 
+const getTasksRef = () => {
+    const userId = getUserId() || undefined;
+
+    return firestore
+        .collection('users')
+        .doc(userId)
+        .collection('tasks');
+}
+
 export const getTasks = async (): Promise<any[]> => {
-    const snapshot = await firestore.collection('tasks').get();
+    const tasksRef = getTasksRef();
+
+    const snapshot = await tasksRef.get();
     const data = snapshot.docs.map(doc => doc.data());
 
     const uid = getUserId();
@@ -12,7 +23,7 @@ export const getTasks = async (): Promise<any[]> => {
 };
 
 export const createTask = async (description: string): Promise<any> => {
-    const tasksRef = firestore.collection('tasks');
+    const tasksRef = getTasksRef();
 
     const task = {
         description,
@@ -25,7 +36,9 @@ export const createTask = async (description: string): Promise<any> => {
 };
 
 export const updateTask = async (id: string, { description, isCompleted }: { description?: string; isCompleted?: boolean; }): Promise<any> => {
-    const taskRef = firestore.doc(`tasks/${id}`);
+    const tasksRef = getTasksRef();
+
+    const taskRef = tasksRef.doc(`tasks/${id}`);
 
     return taskRef.update({
         ...(description !== null ? { description } : null),
@@ -34,7 +47,9 @@ export const updateTask = async (id: string, { description, isCompleted }: { des
 };
 
 export const removeTask = async (id: string): Promise<any> => {
-    const taskRef = firestore.doc(`tasks/${id}`);
+    const tasksRef = getTasksRef();
+
+    const taskRef = tasksRef.doc(`tasks/${id}`);
 
     return taskRef.delete();
 };

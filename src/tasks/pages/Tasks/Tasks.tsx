@@ -43,7 +43,7 @@ function Tasks() {
                     {!loading && tasks.map((task: any) => (
                         <Task
                             task={task}
-                            key={task.id}
+                            key={task.id || task.description}
                             onUpdate={onUpdate}
                             onRemove={() => onRemove(task)}
                         />
