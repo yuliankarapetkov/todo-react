@@ -1,5 +1,5 @@
 import styles from './TaskForm.module.css';
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 interface Props {
     onCreate: (value: string) => void;
@@ -15,7 +15,7 @@ const TaskForm: React.FC<Props> = ({ onCreate }) => {
     const clearInput = () => setDescription('');
     const inputChange = (e: any) => setDescription(e.target.value);
 
-    const submit = (e: any) => {
+    const submit = (e: React.FormEvent) => {
         e.preventDefault();
 
         const trimmed = description.trim();
