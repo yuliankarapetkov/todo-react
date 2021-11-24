@@ -1,12 +1,12 @@
 import { firestore } from '../../app/firebase';
-
-let userId: string | null = null;
-
-export const setUserId = (uid: string | null) => userId = uid;
+import { getUserId } from '../../app/utils';
 
 export const getTasks = async (): Promise<any[]> => {
     const snapshot = await firestore.collection('tasks').get();
     const data = snapshot.docs.map(doc => doc.data());
+
+    const uid = getUserId();
+    console.log('uid', uid);
 
     return data;
 };

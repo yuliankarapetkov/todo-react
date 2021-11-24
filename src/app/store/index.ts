@@ -1,8 +1,8 @@
-import { combineEpics, createEpicMiddleware } from 'redux-observable';
-import { configureStore,  } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
+import { setUserId } from '../utils';
 import { authMiddleware, slice as authSlice, epics as authEpics } from '../../auth/store';
+import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import { slice as tasksSlice, epics as tasksEpics } from '../../tasks/store';
-import { setUserId } from '../../tasks/clients/tasks-client';
 
 const epics = combineEpics(
     ...authEpics,
