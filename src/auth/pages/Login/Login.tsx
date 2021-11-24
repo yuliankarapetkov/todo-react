@@ -2,7 +2,7 @@ import { actions } from '../../store';
 import styles from './Login.module.css';
 import { useDispatch } from 'react-redux';
 
-function Login() {
+const Login: React.FC = () => {
     const dispatch = useDispatch();
 
     const signIn = () => dispatch(actions.signIn());

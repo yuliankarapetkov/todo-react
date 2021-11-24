@@ -8,7 +8,7 @@ const parkDemoUrl = 'https://ng2-todo-app.firebaseapp.com/';
 const authorGitHubUrl = 'https://github.com/yuliankarapetkov'
 const demoCodeUrl = 'https://github.com/yuliankarapetkov/todo-app';
 
-function Header() {
+const Header: React.FC = () => {
     const dispatch = useDispatch();
 
     const [infoVisible, setInfoVisible] = useState(false);

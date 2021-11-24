@@ -7,7 +7,7 @@ interface Props {
 
 const MAX_LENGTH = 64;
 
-const TaskForm:React.FC<Props> = ({ onCreate }) => {
+const TaskForm: React.FC<Props> = ({ onCreate }) => {
     const [description, setDescription] = useState('');
 
     const inputRef = useRef<HTMLInputElement>(null);

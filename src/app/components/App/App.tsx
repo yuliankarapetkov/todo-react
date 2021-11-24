@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { RequireAuth, RequireUnauth } from '../../../auth/components';
 
-function App() {
+const App: React.FC = () => {
   const dispatch = useDispatch();
 
   const getAuthStateLoading = useSelector((state: any) => state.auth.getAuthStateLoading);

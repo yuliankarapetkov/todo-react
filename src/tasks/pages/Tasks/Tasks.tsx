@@ -4,7 +4,7 @@ import styles from './Tasks.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
-function Tasks() {
+const Tasks: React.FC = () => {
     const dispatch = useDispatch();
     const tasks = useSelector((state: any) => state.tasks.list);
     const loading = useSelector((state: any) => state.tasks.getTasksLoading);

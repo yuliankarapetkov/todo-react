@@ -1,7 +1,6 @@
 import styles from './Loading.module.css';
 
-function Loading() {
-
+const Loading: React.FC = () => {
   return (
     <div className={styles.loading}>
         <i className={[styles.icon, 'fa fa-spinner fa-spin'].join(' ')}></i>
