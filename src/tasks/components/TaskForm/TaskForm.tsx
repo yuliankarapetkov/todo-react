@@ -1,9 +1,13 @@
 import styles from './TaskForm.module.css';
 import { useRef, useState } from 'react';
 
+interface Props {
+    onCreate: (value: string) => void;
+};
+
 const MAX_LENGTH = 64;
 
-function TaskForm({ onCreate }: { onCreate: (value: string) => void; }) {
+const TaskForm:React.FC<Props> = ({ onCreate }) => {
     const [description, setDescription] = useState('');
 
     const inputRef = useRef<HTMLInputElement>(null);
