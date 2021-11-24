@@ -1,3 +1,4 @@
+import { Button } from '../../../app/components';
 import styles from './Login.module.css';
 import { actions, selectSignInLoading } from '../../store';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,9 +14,12 @@ const Login: React.FC = () => {
             <div className={[styles.content, 'container'].join(' ')}>
                 <h1 className={styles.title}>Sign in</h1>
 
-                <button className={styles.button} type="button" onClick={signIn} disabled={signInLoading}>
-                    {signInLoading ? 'Signing you in..' : 'Anonymously'}
-                </button>
+                <Button
+                    loading={signInLoading}
+                    onClick={signIn}
+                >
+                    Anonymously
+                </Button>
             </div>
         </div>
     );

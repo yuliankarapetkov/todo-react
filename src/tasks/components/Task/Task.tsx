@@ -1,6 +1,7 @@
+import { Button } from '../../../app/components';
 import { Task as TaskModel } from '../../models';
-import React, { useState } from 'react';
 import styles from './Task.module.css';
+import { useState } from 'react';
 
 interface Props {
     task: TaskModel;
@@ -8,7 +9,11 @@ interface Props {
     onRemove: () => void;
 }
 
-const Task: React.FC<Props> = ({ task, onUpdate, onRemove }) => {
+const Task: React.FC<Props> = ({
+    task,
+    onUpdate,
+    onRemove
+}) => {
     const [description, setDescription] = useState(task.description);
     const [isCompleted, setIsCompleted] = useState(task.isCompleted);
     const [isEditing, setIsEditing] = useState(false);
@@ -60,9 +65,11 @@ const Task: React.FC<Props> = ({ task, onUpdate, onRemove }) => {
                     </div>
 
                     <div className={styles.col}>
-                        <button className={styles.button} type="button" onClick={toggleIsEditing}>
-                            <i className="fas fa-times"></i>
-                        </button>
+                        <Button
+                            variant="circular"
+                            icon="fas fa-times"
+                            onClick={toggleIsEditing}
+                        />
                     </div>
                 </div>
             }
@@ -70,9 +77,12 @@ const Task: React.FC<Props> = ({ task, onUpdate, onRemove }) => {
             {!isEditing &&
                 <div className={styles.task}>
                     <div className={styles.col}>
-                        <button className={[styles.button, task.isCompleted ? styles.active : ''].join(' ')} type="button" onClick={toggleIsCompleted}>
-                            <i className="fas fa-check"></i>
-                        </button>
+                        <Button
+                            variant="circular"
+                            icon="fas fa-check"
+                            active={task.isCompleted}
+                            onClick={toggleIsCompleted}
+                        />
                     </div>
 
                     <div className={styles.col}>
@@ -82,13 +92,18 @@ const Task: React.FC<Props> = ({ task, onUpdate, onRemove }) => {
                     </div>
 
                     <div className={styles.col}>
-                        <button className={styles.button} type="button" onClick={onRemove}>
-                            <i className="fas fa-trash"></i>
-                        </button>
+                        <Button
+                            variant="circular"
+                            icon="fas fa-trash"
+                            className={styles.button}
+                            onClick={onRemove}
+                        />
 
-                        <button className={styles.button} type="button" onClick={toggleIsEditing}>
-                            <i className="fas fa-pen"></i>
-                        </button>
+                        <Button
+                            variant="circular"
+                            icon="fas fa-pen"
+                            onClick={toggleIsEditing}
+                        />
                     </div>
                 </div>
             }

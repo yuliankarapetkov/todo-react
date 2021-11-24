@@ -17,24 +17,7 @@
 }
 
 .button {
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    border: none;
-
-    background-color: var(--light-primary-color);
-    margin-left: 6px;
-}
-
-.button:hover,
-.button.active {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-}
-
-.button:first-child {
-    margin-left: 0
+    margin-right: 6px;
 }
 
 .input {

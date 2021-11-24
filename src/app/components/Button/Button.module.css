@@ -1,0 +1,40 @@
+.button {
+    outline: none;
+    border: none;
+    cursor: pointer; 
+}
+
+.button:hover {
+    transition: all .2s;
+}
+
+.rect {
+    max-width: 240px;
+    width: 100%;
+
+    height: 50px;
+    padding: 4px 16px;
+
+    background: var(--primary-color);
+    color: var(--secondary-color);
+
+    border-radius: 6px;
+}
+
+.rect:hover {
+    background-color: var(--dark-primary-color);
+}
+
+.circular {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+
+    background-color: var(--light-primary-color);
+}
+
+.circular:hover,
+.circular.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
