@@ -1,4 +1,5 @@
 import { AuthState } from "../AuthState";
+import { PayloadAction } from "@reduxjs/toolkit";
 
 export const reducers = {
     // Get Auth State
@@ -8,7 +9,7 @@ export const reducers = {
             getAuthStateLoading: true,
         }
     },
-    getAuthStateSuccess(state: AuthState, action: { payload: string | null }): AuthState {
+    getAuthStateSuccess(state: AuthState, action: PayloadAction<string | null>): AuthState {
         const userId = action.payload;
         const isAuthenticated = !!userId;
 
@@ -35,7 +36,7 @@ export const reducers = {
             signInLoading: true,
         }
     },
-    signInSuccess(state: AuthState, action: { payload: string | null }): AuthState {
+    signInSuccess(state: AuthState, action: PayloadAction<string | null>): AuthState {
         const userId = action.payload;
         const isAuthenticated = !!userId;
 

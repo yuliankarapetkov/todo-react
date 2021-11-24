@@ -1,7 +1,11 @@
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom'
 
-function RequireAuth ({ children }: any) {
+interface Props {
+    children: React.ReactElement<any, any>;
+}
+
+const RequireAuth: React.FC<Props> = ({ children }) => {
     const isAuthenticated = useSelector((state: any) => state.auth.isAuthenticated);
 
     return (

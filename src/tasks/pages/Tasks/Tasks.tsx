@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 import { Task, TaskForm } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
 
-
 const Tasks: React.FC = () => {
     const dispatch = useDispatch();
     const tasks = useSelector((state: RootState) => state.tasks.list);
