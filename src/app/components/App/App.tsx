@@ -1,9 +1,9 @@
-import { Header } from './app/components';
-import { Login } from './auth/pages';
-import { Tasks } from './tasks/pages';
+import { Header } from '..';
+import { Login } from '../../../auth/pages';
+import { Tasks } from '../../../tasks/pages';
 import { Route, Routes } from 'react-router-dom';
-import { RequireAuth } from './auth/components';
-import { actions } from './auth/store';
+import { RequireAuth } from '../../../auth/components';
+import { actions } from '../../../auth/store';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
