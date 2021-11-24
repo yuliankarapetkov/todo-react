@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { actions } from '../../../auth/store';
 import styles from './Header.module.css';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 
 const parkGitHubUrl = 'https://github.com/r-park';
 const parkDemoUrl = 'https://ng2-todo-app.firebaseapp.com/';
@@ -7,9 +9,13 @@ const authorGitHubUrl = 'https://github.com/yuliankarapetkov'
 const demoCodeUrl = 'https://github.com/yuliankarapetkov/todo-app';
 
 function Header() {
+    const dispatch = useDispatch();
+
     const [infoVisible, setInfoVisible] = useState(false);
 
-    const onClick = (e: any) => {
+    const signOut = () => dispatch(actions.signOut());
+
+    const showInfo = (e: any) => {
         e.preventDefault();
 
         setInfoVisible(oldValue => !oldValue);
@@ -24,7 +30,7 @@ function Header() {
                     </div>
 
                     <div className={styles.info}>
-                        <a className={styles['info-button']} onClick={onClick} href="/">
+                        <a className={styles['info-button']} onClick={showInfo} href="/">
                             <i className="fas fa-info-circle"></i>
                         </a>
 
@@ -40,9 +46,10 @@ function Header() {
                 </div>
 
                 <div className={styles.right}>
-                    <a className={styles['sign-out-button']}>
+                    <a className={styles['sign-out-button']} onClick={signOut} href="/">
                         Sign Out
                     </a>
+
                     <a href={demoCodeUrl} className={styles.github} target="_blank" rel="noreferrer">
                         <i className="fab fa-github"></i>
                     </a>
