@@ -1,9 +1,9 @@
 import * as functions from 'firebase-functions';
 
 export const onCreateTask = functions.firestore
-    .document('tasks/{id}')
+    .document('users/{userId}/tasks/{taskId}')
     .onCreate(async (snap: any, context: any) => {
-        const { id } = context.params;
+        const { taskId } = context.params;
 
-        return snap.ref.update({ id });
+        return snap.ref.update({ id: taskId });
     });
