@@ -1,7 +1,7 @@
-import { actions } from '../../../auth/store';
 import styles from './Header.module.css';
-import { useDispatch } from 'react-redux';
 import React, { useState } from 'react';
+import { actions, selectIsAuthenticated, selectSignOutLoading } from '../../../auth/store';
+import { useDispatch, useSelector } from 'react-redux';
 
 const parkGitHubUrl = 'https://github.com/r-park';
 const parkDemoUrl = 'https://ng2-todo-app.firebaseapp.com/';
@@ -10,10 +10,16 @@ const demoCodeUrl = 'https://github.com/yuliankarapetkov/todo-app';
 
 const Header: React.FC = () => {
     const dispatch = useDispatch();
+    const isAuthenticated = useSelector(selectIsAuthenticated);
+    const signOutLoading = useSelector(selectSignOutLoading);
 
     const [infoVisible, setInfoVisible] = useState(false);
 
-    const signOut = () => dispatch(actions.signOut());
+    const signOut = (e: React.MouseEvent) => {
+        e.preventDefault();
+
+        dispatch(actions.signOut());
+    }
 
     const showInfo = (e: React.MouseEvent) => {
         e.preventDefault();
@@ -46,9 +52,11 @@ const Header: React.FC = () => {
                 </div>
 
                 <div className={styles.right}>
-                    <a className={styles['sign-out-button']} onClick={signOut} href="/">
-                        Sign Out
-                    </a>
+                    {isAuthenticated &&
+                        <a className={styles['sign-out-button']} onClick={signOut} href="/">
+                            {signOutLoading ? 'Signing you out..' : 'Sign out'}
+                        </a>
+                    }
 
                     <a href={demoCodeUrl} className={styles.github} target="_blank" rel="noreferrer">
                         <i className="fab fa-github"></i>
