@@ -1,10 +1,10 @@
 import { Header } from '..';
 import { Login } from '../../../auth/pages';
 import { Tasks } from '../../../tasks/pages';
-import { Route, Routes } from 'react-router-dom';
 import { actions } from '../../../auth/store';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { RequireAuth, RequireUnauth } from '../../../auth/components';
 
 function App() {
@@ -19,6 +19,11 @@ function App() {
       <Header />
 
       <Routes>
+        <Route
+          path="/"
+          element={<Navigate to="/tasks" replace />}
+        />
+
         <Route
           path="/login"
           element={
