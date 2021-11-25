@@ -2,7 +2,7 @@ import { Task } from '../models';
 
 export interface TasksState {
     list: Task[];
-    loaded: boolean;
+    getTasksStatus: 'success' | 'failure' | null;
 
     getTasksLoading: boolean;
     createTaskLoading: boolean;

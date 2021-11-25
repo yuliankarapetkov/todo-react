@@ -5,7 +5,7 @@ import { createSelector } from '@reduxjs/toolkit';
 const selectTasksState = (state: RootState) => state.tasks;
 
 export const selectTasks = createSelector(selectTasksState, (state: TasksState) => state.list);
-export const selectLoaded = createSelector(selectTasksState, (state: TasksState) => state.loaded);
+export const selectGetTasksStatus = createSelector(selectTasksState, (state: TasksState) => state.getTasksStatus);
 
 export const selectGetTasksLoading = createSelector(selectTasksState, (state: TasksState) => state.getTasksLoading);
 export const selectCreateTaskLoading = createSelector(selectTasksState, (state: TasksState) => state.createTaskLoading);

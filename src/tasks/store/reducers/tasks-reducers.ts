@@ -22,7 +22,7 @@ export const reducers = {
         return {
             ...state,
             getTasksLoading: false,
-            loaded: true,
+            getTasksStatus: 'success',
             list
         };
     },
@@ -30,7 +30,7 @@ export const reducers = {
         return {
             ...state,
             getTasksLoading: false,
-            loaded: false,
+            getTasksStatus: 'failure',
         }
     },
     

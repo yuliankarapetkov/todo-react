@@ -5,7 +5,8 @@ import { TasksState } from '../TasksState';
 
 const initialState: TasksState = {
     list: [],
-    loaded: false,
+
+    getTasksStatus: null,
 
     getTasksLoading: false,
     createTaskLoading: false,
