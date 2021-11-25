@@ -42,3 +42,22 @@
     background-color: var(--primary-color);
     color: var(--secondary-color);
 }
+
+.text {
+    background-color: transparent;
+    color: var(--secondary-color);
+}
+
+.text:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .circular {
+        height: 30px;
+        width: 30px;
+
+        font-size: 12px;
+        margin-left: 6px;
+    }
+}

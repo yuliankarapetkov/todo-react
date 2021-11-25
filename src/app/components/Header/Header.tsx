@@ -1,5 +1,6 @@
+import { Button } from '..';
 import styles from './Header.module.css';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { actions, selectIsAuthenticated, selectSignOutLoading } from '../../../auth/store';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -15,15 +16,11 @@ const Header: React.FC = () => {
 
     const [infoVisible, setInfoVisible] = useState(false);
 
-    const signOut = (e: React.MouseEvent) => {
-        e.preventDefault();
-
+    const signOut = () => {
         dispatch(actions.signOut());
     }
 
-    const showInfo = (e: React.MouseEvent) => {
-        e.preventDefault();
-
+    const showInfo = () => {
         setInfoVisible(oldValue => !oldValue);
     };
 
@@ -36,9 +33,11 @@ const Header: React.FC = () => {
                     </div>
 
                     <div className={styles.info}>
-                        <a className={styles['info-button']} onClick={showInfo} href="/">
-                            <i className="fas fa-info-circle"></i>
-                        </a>
+                        <Button
+                            icon="fas fa-info-circle"
+                            variant="text"
+                            onClick={showInfo}
+                        />
 
                         {infoVisible &&
                             <div className={styles['info-content']}>
@@ -53,9 +52,9 @@ const Header: React.FC = () => {
 
                 <div className={styles.right}>
                     {isAuthenticated &&
-                        <a className={styles['sign-out-button']} onClick={signOut} href="/">
-                            {signOutLoading ? 'Signing you out..' : 'Sign out'}
-                        </a>
+                        <Button variant="text" loading={signOutLoading} onClick={signOut}>
+                            Sign out
+                        </Button>
                     }
 
                     <a href={demoCodeUrl} className={styles.github} target="_blank" rel="noreferrer">

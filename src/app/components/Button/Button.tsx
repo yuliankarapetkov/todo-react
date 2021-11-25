@@ -3,7 +3,7 @@ import styles from './Button.module.css';
 interface Props {
     className?: string;
     type?: 'button' | 'submit' | 'reset';
-    variant?: 'rect' | 'circular';
+    variant?: 'rect' | 'circular' | 'text';
     active?: boolean;
     loading?: boolean;
     icon?: string;
