@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const parkGitHubUrl = 'https://github.com/r-park';
 const parkDemoUrl = 'https://ng2-todo-app.firebaseapp.com/';
 const authorGitHubUrl = 'https://github.com/yuliankarapetkov'
-const demoCodeUrl = 'https://github.com/yuliankarapetkov/todo-app';
+const demoCodeUrl = 'https://github.com/yuliankarapetkov/todo-react';
 
 const Header: React.FC = () => {
     const dispatch = useDispatch();
