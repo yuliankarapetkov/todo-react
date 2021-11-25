@@ -12,11 +12,11 @@
 }
 
 .success {
-    background-color: #00C4A6;
+    background-color: var(--success-color);
 }
 
 .error {
-    background-color: #DC3E2D;
+    background-color: var(--failure-color);
 }
 
 .message {
