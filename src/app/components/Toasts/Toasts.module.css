@@ -1,0 +1,9 @@
+.toasts {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+}

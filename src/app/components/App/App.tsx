@@ -1,4 +1,4 @@
-import { Header, Loading } from '..';
+import { Header, Loading, Toasts } from '..';
 import { Login } from '../../../auth/pages';
 import { Tasks } from '../../../tasks/pages';
 import { actions } from '../../../auth/store';
@@ -24,6 +24,8 @@ const App: React.FC = () => {
   return (
     <>
       <Header />
+
+      <Toasts />
 
       <Routes>
         <Route
