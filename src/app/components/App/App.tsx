@@ -15,7 +15,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
       dispatch(actions.getAuthState());
-  }, []);
+  }, [dispatch]);
 
   if (!getAuthStateLoaded || getAuthStateLoading) {
       return <Loading />
