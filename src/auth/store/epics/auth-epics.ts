@@ -1,9 +1,9 @@
 import { AnyAction } from '@reduxjs/toolkit';
 import { Epic } from 'redux-observable';
 import { actions } from '../slices/auth-slice';
-import { actions as appActions } from '../../../app/store';
+import { actions as appActions } from '../../../app/store/slices';
 import * as authClient from '../../clients/auth-client';
-import { createToast } from '../../../app/utils';
+import { createToast } from '../../../app/utils/toasts';
 import { from, of } from 'rxjs';
 import { filter, catchError, map, mergeMap, take } from 'rxjs/operators';
 

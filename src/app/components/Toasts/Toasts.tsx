@@ -2,7 +2,7 @@ import { Toast } from '..';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectToasts } from '../../store/selectors';
 import styles from './Toasts.module.css';
-import { actions } from '../../store';
+import { actions } from '../../store/slices';
 
 const Toasts: React.FC = () => {
     const dispatch = useDispatch();
