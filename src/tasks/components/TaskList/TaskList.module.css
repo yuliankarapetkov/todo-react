@@ -1,11 +1,11 @@
 .list {
-    margin-top: 60px;
+    margin-top: 3.75rem;
 }
 
 .empty,
 .loading,
 .failure {
-    font-size: 24px;
+    font-size: 1.5rem;
     color: var(--secondary-text-color);
 }
 
@@ -25,11 +25,11 @@
 
 @media (max-width: 768px) {
     .list {
-        margin-top: 40px;
+        margin-top: 2.5rem;
     }
 
     .empty,
     .loading {
-        font-size: 18px;
+        font-size: 1.125rem;
     }
 }   

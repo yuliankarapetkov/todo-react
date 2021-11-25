@@ -17,7 +17,7 @@
 }
 
 .button {
-    margin-right: 6px;
+    margin-right: var(--small-margin);
 }
 
 .input {
@@ -27,8 +27,8 @@
 }
 
 .description {
-    font-size: 24px;
-    padding-left: 24px;
+    font-size: 1.5rem;
+    padding-left: 1.5rem;
 
     overflow: hidden;
     text-overflow: ellipsis;
@@ -41,7 +41,7 @@
     }
 
     .description {
-        font-size: 18px;
-        padding-left: 16px;
+        font-size: 1.125rem;
+        padding-left: 1rem;
     }
 }
