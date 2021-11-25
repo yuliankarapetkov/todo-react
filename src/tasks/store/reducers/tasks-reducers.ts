@@ -61,18 +61,24 @@ export const reducers = {
     },
 
     // Update Task
-    updateTask(state: TasksState, action: PayloadAction<UpdateTaskPayload>): TasksState {
+    updateTask(state: TasksState, action: PayloadAction<UpdateTaskPayload>): TasksState | void {
         return {
             ...state,
-            updateTaskLoading: true
+            updateTaskLoading: {
+                ...state.updateTaskLoading,
+                [action.payload.id]: true
+            }
         }
     },
-    updateTaskSuccess(state: TasksState, action: PayloadAction<UpdateTaskPayload>): TasksState {
+    updateTaskSuccess(state: TasksState, action: PayloadAction<UpdateTaskPayload>): TasksState | void {
         const task = action.payload;
 
         return {
             ...state,
-            updateTaskLoading: false,
+            updateTaskLoading: {
+                ...state.updateTaskLoading,
+                [action.payload.id]: false
+            },
             list: state.list.map(t => 
                 t.id !== task.id 
                     ? t 
@@ -84,10 +90,13 @@ export const reducers = {
             )
         };
     },
-    updateTaskFailure(state: TasksState): TasksState {
+    updateTaskFailure(state: TasksState, action: PayloadAction<string>): TasksState {
         return {
             ...state,
-            updateTaskLoading: false,
+            updateTaskLoading: {
+                ...state.updateTaskLoading,
+                [action.payload]: false
+            },
         }
     },
 
@@ -95,7 +104,10 @@ export const reducers = {
     removeTask(state: TasksState, action: PayloadAction<string>): TasksState {
         return {
             ...state,
-            removeTaskLoading: true
+            removeTaskLoading: {
+                ...state.removeTaskLoading,
+                [action.payload]: true
+            },
         }
     },
     removeTaskSuccess(state: TasksState, action: PayloadAction<string>): TasksState {
@@ -103,14 +115,20 @@ export const reducers = {
 
         return {
             ...state,
-            removeTaskLoading: false,
+            removeTaskLoading: {
+                ...state.removeTaskLoading,
+                [action.payload]: false
+            },
             list: state.list.filter(t => t.id !== id)
         };
     },
-    removeTaskFailure(state: TasksState): TasksState {
+    removeTaskFailure(state: TasksState, action: PayloadAction<string>): TasksState {
         return {
             ...state,
-            removeTaskLoading: false,
+            removeTaskLoading: {
+                ...state.removeTaskLoading,
+                [action.payload]: false
+            },
         }
     },
 };

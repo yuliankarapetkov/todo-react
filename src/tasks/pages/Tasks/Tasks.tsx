@@ -1,14 +1,17 @@
-import { RootState } from '../../../app/store';
-import { actions } from '../../store';
+
 import styles from './Tasks.module.css';
 import { useEffect } from 'react';
 import { Task, TaskForm } from '../../components';
+import { actions, selectGetTasksLoading, selectRemoveTaskLoading, selectTasks, selectUpdateTaskLoading } from '../../store';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Tasks: React.FC = () => {
     const dispatch = useDispatch();
-    const tasks = useSelector((state: RootState) => state.tasks.list);
-    const loading = useSelector((state: RootState) => state.tasks.getTasksLoading);
+    const tasks = useSelector(selectTasks);
+    const loading = useSelector(selectGetTasksLoading);
+
+    const updateTaskLoading = useSelector(selectUpdateTaskLoading);
+    const removeTaskLoading = useSelector(selectRemoveTaskLoading);
 
     useEffect(() => {
         dispatch(actions.getTasks());
@@ -44,6 +47,8 @@ const Tasks: React.FC = () => {
                     {!loading && tasks.map((task: any) => (
                         <Task
                             task={task}
+                            updateLoading={updateTaskLoading[task.id]}
+                            removeLoading={removeTaskLoading[task.id]}
                             key={task.id || task.description}
                             onUpdate={onUpdate}
                             onRemove={() => onRemove(task)}

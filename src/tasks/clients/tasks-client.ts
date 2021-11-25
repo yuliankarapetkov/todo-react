@@ -35,8 +35,6 @@ export const createTask = async (description: string): Promise<any> => {
 export const updateTask = async (id: string, { description, isCompleted }: { description?: string; isCompleted?: boolean; }): Promise<any> => {
     const tasksRef = getTasksRef();
 
-    console.log('update', { id, description, isCompleted })
-
     const taskRef = tasksRef.doc(id);
 
     return taskRef.update({

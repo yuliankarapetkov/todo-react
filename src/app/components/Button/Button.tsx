@@ -33,6 +33,7 @@ const Button: React.FC<Props> = ({
                 className].join(' ')
             }
             type={type}
+            disabled={loading}
             onClick={onClick}
         >
             {iconVisible && <i className={iconClassName}></i>}

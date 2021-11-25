@@ -8,6 +8,10 @@
     transition: all .2s;
 }
 
+.button:disabled {
+    opacity: 0.85;
+}
+
 .rect {
     max-width: 240px;
     width: 100%;

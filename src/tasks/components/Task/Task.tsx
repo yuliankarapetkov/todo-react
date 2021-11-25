@@ -5,12 +5,16 @@ import { useState } from 'react';
 
 interface Props {
     task: TaskModel;
+    updateLoading: boolean;
+    removeLoading: boolean;
     onUpdate: (task: TaskModel) => void;
     onRemove: () => void;
 }
 
 const Task: React.FC<Props> = ({
     task,
+    updateLoading = false,
+    removeLoading = false,
     onUpdate,
     onRemove
 }) => {
@@ -81,6 +85,7 @@ const Task: React.FC<Props> = ({
                             variant="circular"
                             icon="fas fa-check"
                             active={task.isCompleted}
+                            loading={updateLoading}
                             onClick={toggleIsCompleted}
                         />
                     </div>
@@ -96,6 +101,7 @@ const Task: React.FC<Props> = ({
                             variant="circular"
                             icon="fas fa-trash"
                             className={styles.button}
+                            loading={removeLoading}
                             onClick={onRemove}
                         />
 

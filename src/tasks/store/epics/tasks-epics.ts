@@ -38,7 +38,7 @@ export const updateTask$: TaskEpic = action$ =>
             from(tasksClient.updateTask(id, { description, isCompleted }))
                 .pipe(
                     map(() => actions.updateTaskSuccess({ id, description, isCompleted })),
-                    catchError(() => of(actions.updateTaskFailure()))
+                    catchError(() => of(actions.updateTaskFailure(id)))
                 )
         )
     );
@@ -50,7 +50,7 @@ export const removeTask$: TaskEpic = action$ =>
             from(tasksClient.removeTask(id))
                 .pipe(
                     map(() => actions.removeTaskSuccess(id)),
-                    catchError(() => of(actions.removeTaskFailure()))
+                    catchError(() => of(actions.removeTaskFailure(id)))
                 )
         )
     );

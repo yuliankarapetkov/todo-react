@@ -6,6 +6,6 @@ export interface TasksState {
 
     getTasksLoading: boolean;
     createTaskLoading: boolean;
-    updateTaskLoading: boolean;
-    removeTaskLoading: boolean;
+    updateTaskLoading: { [key: string]: boolean; };
+    removeTaskLoading: { [key: string]: boolean; };
 }
