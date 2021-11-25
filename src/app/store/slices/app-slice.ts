@@ -4,15 +4,7 @@ import { reducers } from '../reducers/app-reducers';
 import { AppState } from '../AppState';
 
 const initialState: AppState = {
-    toasts: [{
-      id: '1',
-      message: 'Successfully logged in',
-      type: 'success'
-    }, {
-      id: '2',
-      message: 'proba proba',
-      type: 'error'
-    }]
+    toasts: []
 };
 
 export const slice = createSlice({

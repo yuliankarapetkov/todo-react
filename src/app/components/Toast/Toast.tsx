@@ -13,7 +13,7 @@ const Toast: React.FC<Props> = ({
 }) => {
     return (
         <div className={[styles.toast, styles[type]].join(' ')}>
-            <span>
+            <span className={styles.message}>
                 {message}
             </span>
 

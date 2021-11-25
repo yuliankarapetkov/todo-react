@@ -18,3 +18,7 @@
 .error {
     background-color: #DC3E2D;
 }
+
+.message {
+    margin-right: 2rem;
+}
