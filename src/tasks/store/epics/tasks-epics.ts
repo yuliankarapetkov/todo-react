@@ -1,6 +1,8 @@
 import { AnyAction } from '@reduxjs/toolkit';
 import { Epic } from 'redux-observable';
 import { actions } from '../slices/tasks-slice';
+import { actions as appActions } from '../../../app/store/slices';
+import { createToast } from '../../../app/utils/toasts';
 import { from, of } from 'rxjs';
 import { filter, catchError, map, mergeMap } from 'rxjs/operators';
 import * as tasksClient from '../../clients/tasks-client';
@@ -19,6 +21,7 @@ export const getTasks$: TaskEpic = action$ =>
         )
     );
 
+// Create Task
 export const createTask$: TaskEpic = action$ => 
     action$.pipe(
         filter(actions.createTask.match),
@@ -31,6 +34,16 @@ export const createTask$: TaskEpic = action$ =>
         )
     );
 
+export const createTaskFailure$: TaskEpic = action$ => 
+    action$.pipe(
+        filter(actions.createTaskFailure.match),
+        map(() => {
+            const toast = createToast('Oops! We couldn\'t create this task. Please, try again later!', 'error');
+            return appActions.showToast(toast);
+        })
+    );
+
+// Update Task
 export const updateTask$: TaskEpic = action$ => 
     action$.pipe(
         filter(actions.updateTask.match),
@@ -43,6 +56,16 @@ export const updateTask$: TaskEpic = action$ =>
         )
     );
 
+export const updateTaskFailure$: TaskEpic = action$ => 
+    action$.pipe(
+        filter(actions.updateTaskFailure.match),
+        map(() => {
+            const toast = createToast('Oops! We couldn\'t update this task. Please, try again later!', 'error');
+            return appActions.showToast(toast);
+        })
+    );
+
+// Remove Task
 export const removeTask$: TaskEpic = action$ => 
     action$.pipe(
         filter(actions.removeTask.match),
@@ -55,9 +78,21 @@ export const removeTask$: TaskEpic = action$ =>
         )
     );
 
+export const removeTaskFailure$: TaskEpic = action$ => 
+    action$.pipe(
+        filter(actions.removeTaskFailure.match),
+        map(() => {
+            const toast = createToast('Oops! We couldn\'t remove this task. Please, try again later!', 'error');
+            return appActions.showToast(toast);
+        })
+    );
+
 export const epics = [
     getTasks$,
     createTask$,
+    createTaskFailure$,
     updateTask$,
+    updateTaskFailure$,
     removeTask$,
+    removeTaskFailure$
 ];
