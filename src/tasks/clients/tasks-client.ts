@@ -17,7 +17,9 @@ export const getTasks = async (): Promise<any[]> => {
         .orderBy('createdAt', 'desc')
         .get();
 
-    const data = snapshot.docs.map(doc => doc.data());
+    const data = snapshot.docs
+        .map(doc => doc.data())
+        .map(task => ({ ...task, createdAt: new Date(task.createdAt * 1000).toISOString() }));
 
     return data;
 };
@@ -32,7 +34,9 @@ export const createTask = async (description: string): Promise<any> => {
 
     const { id } = await tasksRef.add(task);
 
-    return { ...task, id };
+    const createdAt = new Date().toISOString();
+
+    return { ...task, id, createdAt };
 };
 
 export const updateTask = async (id: string, { description, isCompleted }: { description?: string; isCompleted?: boolean; }): Promise<any> => {
