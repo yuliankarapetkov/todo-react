@@ -7,3 +7,25 @@
     bottom: 2rem;
     left: 2rem;
 }
+
+.toast-enter {
+    transform: translateY(200%);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+.toast-enter-active {
+    opacity: 1;
+    transform: translateY(0%);
+}
+
+.toast-exit {
+    transform: translateY(0%);
+    opacity: 1;
+    transition: all 0.7s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+.toast-exit-active {
+    opacity: 0;
+    transform: translateY(200%);
+}
