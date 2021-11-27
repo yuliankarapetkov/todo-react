@@ -23,6 +23,28 @@
     margin-bottom: 1rem;
 }
 
+.task-enter {
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: transform 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.task-enter-active {
+    opacity: 1;
+    transform: translateY(0%);
+}
+
+.task-exit {
+    transform: scale(1, 1);
+    opacity: 1;
+    transition: all 0.3s ease-in-out; 
+}
+
+.task-exit-active {
+    transform: scale(0, 0);
+    opacity: 0.1;
+}
+
 @media (max-width: 768px) {
     .list {
         margin-top: 2.5rem;
