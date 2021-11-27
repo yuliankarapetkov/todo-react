@@ -5,5 +5,7 @@ export const onCreateTask = functions.firestore
     .onCreate(async (snap: any, context: any) => {
         const { taskId } = context.params;
 
-        return snap.ref.update({ id: taskId });
+        const createdAt = new Date();
+
+        return snap.ref.update({ id: taskId, createdAt });
     });

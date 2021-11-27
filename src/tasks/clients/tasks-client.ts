@@ -13,7 +13,10 @@ const getTasksRef = () => {
 export const getTasks = async (): Promise<any[]> => {
     const tasksRef = getTasksRef();
 
-    const snapshot = await tasksRef.get();
+    const snapshot = await tasksRef
+        .orderBy('createdAt', 'desc')
+        .get();
+
     const data = snapshot.docs.map(doc => doc.data());
 
     return data;
