@@ -16,7 +16,7 @@
 }
 
 .error {
-    background-color: var(--failure-color);
+    background-color: var(--error-color);
 }
 
 .message {
